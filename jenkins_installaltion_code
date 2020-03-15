@@ -1,0 +1,26 @@
+Jenkins requires Java to function, but Jenkins won't work with just any release of Java. Here's how to install a version of Jenkins that will make the installation and usage of Jenkins possible:
+
+Open a terminal window on your Ubuntu server.
+apt-get update
+Issue the command sudo apt install default-jdk (to install java).
+Allow the installation to complete.
+Note: The above installation can take some time, so be patient.
+
+To verify Java has been installed, issue the command:
+java --version
+You should see that Java has, indeed, been installed (Figure A).
+
+How to install Jenkins
+Next we install Jenkins. Go back to your terminal window and follow these steps:
+
+Download and install the necessary GPG key with the command wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -.
+Add the necessary repository with the command sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'.
+Add the universe repository with the command sudo add-apt-repository universe.
+Update apt with the command sudo apt-get update.
+Install Jenkins with the command sudo apt-get install jenkins -y.
+Allow the installation to complete.
+
+How to access Jenkins
+Open a web browser and point it to http://IP:8080 (where IP is the IP address of the hosting server). You will then be prompted to copy and paste a password that was created during the Jenkins installation. To retrieve that password, go back to the terminal window and issue the command:
+
+sudo less /var/lib/jenkins/secrets/initialAdminPassword
